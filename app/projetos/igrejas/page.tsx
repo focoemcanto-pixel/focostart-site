@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Bell, Check, MessageCircle, Music2, Smartphone, Users, Workflow, Zap } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Bell, Check, MessageCircle, Music2, Smartphone, Users, Workflow } from 'lucide-react'
 
 const whatsappBudget =
   'https://wa.me/5571993392294?text=Olá!%20Vim%20através%20da%20página%20do%20projeto%20para%20igrejas%20da%20Foco%20Start%20e%20gostaria%20de%20solicitar%20um%20orçamento.'
@@ -23,6 +23,39 @@ const modules = [
     icon: MessageCircle,
     title: 'Disparos no WhatsApp',
     text: 'Automatize lembretes, avisos de escala, repertórios e confirmações com mensagens organizadas.',
+  },
+]
+
+const showcaseImages = [
+  {
+    title: 'Dashboard Administrativo',
+    description: 'Visão geral da operação ministerial, escalas, confirmações e gestão de ministérios.',
+    image: '/projects/igrejas/dashboard-admin.png',
+  },
+  {
+    title: 'Interface Mobile do Membro',
+    description: 'Cada integrante acessa escalas, repertório e confirmações pelo celular.',
+    image: '/projects/igrejas/mobile-membro.png',
+  },
+  {
+    title: 'Convite de Escala',
+    description: 'Convites organizados com confirmação rápida e informações completas.',
+    image: '/projects/igrejas/convite-escala.png',
+  },
+  {
+    title: 'Automação WhatsApp',
+    description: 'Lembretes automáticos, notificações e comunicação inteligente.',
+    image: '/projects/igrejas/automacao-whatsapp.png',
+  },
+  {
+    title: 'Repertório Inteligente',
+    description: 'Organização de músicas, tons, observações e ordem do culto.',
+    image: '/projects/igrejas/repertorio.png',
+  },
+  {
+    title: 'Analytics e Relatórios',
+    description: 'Métricas de participação, confirmações e engajamento ministerial.',
+    image: '/projects/igrejas/analytics.png',
   },
 ]
 
@@ -55,50 +88,6 @@ function Header() {
   )
 }
 
-function PhoneMockup() {
-  return (
-    <div className="mx-auto w-full max-w-[280px] rounded-[2.5rem] border border-white/15 bg-black p-3 shadow-2xl shadow-cyan-500/10">
-      <div className="rounded-[2rem] bg-[#07111F] p-4">
-        <div className="mx-auto mb-5 h-1.5 w-20 rounded-full bg-white/20" />
-        <div className="mb-5 rounded-2xl bg-gradient-to-br from-blue-500/25 to-cyan-300/10 p-4">
-          <p className="text-xs text-cyan-200">Próximo culto</p>
-          <h3 className="mt-2 text-xl font-bold">Domingo, 19h</h3>
-          <p className="mt-1 text-xs text-slate-300">Vocal • Ministério de Louvor</p>
-        </div>
-        <div className="space-y-3">
-          {['Confirmar presença', 'Ver repertório', 'Abrir localização'].map((item) => (
-            <div key={item} className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-sm">
-              <span>{item}</span>
-              <Check className="h-4 w-4 text-cyan-300" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function WhatsAppMockup() {
-  return (
-    <div className="rounded-[2rem] border border-white/10 bg-[#08111F] p-5 shadow-2xl shadow-black/20">
-      <div className="mb-5 flex items-center gap-3 border-b border-white/10 pb-4">
-        <div className="grid h-11 w-11 place-items-center rounded-full bg-green-500 text-white"><MessageCircle className="h-5 w-5" /></div>
-        <div>
-          <p className="font-semibold">Automação WhatsApp</p>
-          <p className="text-xs text-slate-400">Convite enviado automaticamente</p>
-        </div>
-      </div>
-      <div className="ml-auto max-w-[85%] rounded-2xl rounded-tr-sm bg-green-500/15 p-4 text-sm leading-relaxed text-slate-100">
-        Olá, Ana! Você foi escalada para o culto de domingo às 19h como vocal. Confirme sua presença e acesse o repertório pelo painel.
-      </div>
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        <div className="rounded-xl bg-white/[0.04] p-3 text-center text-xs text-cyan-200">Confirmar</div>
-        <div className="rounded-xl bg-white/[0.04] p-3 text-center text-xs text-cyan-200">Ver repertório</div>
-      </div>
-    </div>
-  )
-}
-
 export default function ChurchProjectPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#05070D] text-white selection:bg-blue-500/30">
@@ -126,9 +115,6 @@ export default function ChurchProjectPage() {
               <a href={whatsappBudget} className="group inline-flex items-center gap-2 rounded-2xl bg-blue-600 px-7 py-4 font-semibold shadow-lg shadow-blue-600/25 transition hover:-translate-y-0.5 hover:bg-blue-500">
                 Quero uma solução assim <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </a>
-              <a href="#interfaces" className="rounded-2xl border border-white/10 bg-white/[0.04] px-7 py-4 font-semibold transition hover:bg-white/[0.08]">
-                Ver interfaces
-              </a>
             </div>
           </div>
 
@@ -155,30 +141,56 @@ export default function ChurchProjectPage() {
         </div>
       </section>
 
-      <section id="interfaces" className="relative z-10 mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-12 max-w-3xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-cyan-300">Interfaces do projeto</p>
-          <h2 className="text-3xl font-bold tracking-tight md:text-5xl">Cada pessoa vê o que precisa, no momento certo.</h2>
-          <p className="mt-5 text-lg leading-relaxed text-slate-400">A força do sistema está em separar a experiência do administrador, dos membros e das automações.</p>
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-20">
+        <div className="mb-14 max-w-3xl">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-cyan-300">Showcase das interfaces</p>
+          <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
+            Cada frente do sistema resolve uma parte da operação.
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-slate-400">
+            Explore as interfaces e visualize como uma plataforma personalizada pode transformar a organização do ministério.
+          </p>
         </div>
 
-        <div className="grid items-center gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-          <PhoneMockup />
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-[2rem] border border-white/10 bg-[#0B1020]/85 p-6">
-              <Users className="mb-5 h-8 w-8 text-cyan-300" />
-              <h3 className="mb-3 text-2xl font-bold">Painel do membro</h3>
-              <p className="leading-relaxed text-slate-400">O músico acessa pelo celular, vê convites de escala, função, data, horário, local e repertório.</p>
+        <div className="space-y-10">
+          {showcaseImages.map((item, index) => (
+            <div
+              key={item.title}
+              className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0B1020]/85 shadow-2xl shadow-black/20"
+            >
+              <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="relative overflow-hidden border-b border-white/10 lg:border-b-0 lg:border-r">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition duration-700 hover:scale-[1.02]"
+                  />
+                </div>
+
+                <div className="flex flex-col justify-center p-8 md:p-12">
+                  <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-cyan-400/10 bg-cyan-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200">
+                    Interface 0{index + 1}
+                  </div>
+
+                  <h3 className="text-3xl font-bold tracking-tight md:text-4xl">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-5 text-lg leading-relaxed text-slate-400">
+                    {item.description}
+                  </p>
+
+                  <a
+                    href={whatsappBudget}
+                    className="mt-8 inline-flex w-fit items-center gap-2 rounded-2xl bg-white px-6 py-4 font-semibold text-[#05070D] transition hover:bg-blue-100"
+                  >
+                    Quero algo assim
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
             </div>
-            <div className="rounded-[2rem] border border-white/10 bg-[#0B1020]/85 p-6">
-              <Music2 className="mb-5 h-8 w-8 text-amber-300" />
-              <h3 className="mb-3 text-2xl font-bold">Repertório organizado</h3>
-              <p className="leading-relaxed text-slate-400">Músicas separadas por culto, tom, referência, observações e momento de entrada.</p>
-            </div>
-            <div className="md:col-span-2">
-              <WhatsAppMockup />
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -195,18 +207,6 @@ export default function ChurchProjectPage() {
                 <p className="font-medium text-slate-200">{flow}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-10 mx-auto max-w-7xl px-6 py-24">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-blue-400/20 bg-gradient-to-br from-blue-600 to-cyan-500 p-10 shadow-2xl shadow-blue-600/20 md:p-16">
-          <div className="relative max-w-3xl">
-            <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl">Sua igreja ainda organiza tudo manualmente?</h2>
-            <p className="mb-8 text-lg leading-relaxed text-blue-50/90">A Foco Start pode desenhar uma solução personalizada para sua realidade ministerial.</p>
-            <a href={whatsappBudget} className="inline-flex items-center gap-2 rounded-2xl bg-white px-7 py-4 font-semibold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-50">
-              Solicitar orçamento pelo WhatsApp <ArrowRight className="h-4 w-4" />
-            </a>
           </div>
         </div>
       </section>
