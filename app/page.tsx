@@ -61,19 +61,22 @@ const concepts = [
   {
     tag: 'Igrejas',
     title: 'Sistema de Escalas Ministeriais',
-    description: 'Organização de músicos, repertório, confirmações e lembretes em um só painel.',
+    description: 'Organização de músicos, repertório, confirmações e lembretes em um painel acolhedor e ministerial.',
+    image: '/projects/igrejas-dashboard.png',
     items: ['Confirmação de músicos', 'Repertório por culto', 'Avisos automáticos'],
   },
   {
     tag: 'Negócios',
     title: 'CRM com Atendimento Inteligente',
-    description: 'Leads, clientes e conversas organizadas para vender e atender melhor.',
+    description: 'Leads, clientes e conversas organizadas em uma interface corporativa focada em performance.',
+    image: '/projects/crm-dashboard.png',
     items: ['Leads organizados', 'Histórico de contato', 'Follow-up automático'],
   },
   {
     tag: 'Eventos',
     title: 'Gestão de Contratos e Clientes',
-    description: 'Propostas, contratos, pagamentos, agenda e área do cliente com visual premium.',
+    description: 'Eventos, contratos, pagamentos e agenda com visual sofisticado para operações premium.',
+    image: '/projects/eventos-dashboard.png',
     items: ['Propostas digitais', 'Pagamentos', 'Painel do cliente'],
   },
 ]
@@ -290,16 +293,19 @@ export default function Home() {
           text="Protótipos e mockups ajudam seu cliente a enxergar a solução antes mesmo dela existir em produção."
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid gap-7 lg:grid-cols-3">
           {concepts.map((project) => (
-            <div key={project.title} className="overflow-hidden rounded-3xl border border-white/10 bg-[#0B1020]/85 shadow-xl shadow-black/10 transition hover:-translate-y-1 hover:border-cyan-300/30">
-              <div className="h-40 border-b border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.20),transparent_40%),linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-5">
-                <span className="rounded-full bg-blue-500/15 px-3 py-1 text-xs font-semibold text-cyan-200">{project.tag}</span>
-                <div className="mt-8 grid grid-cols-3 gap-2">
-                  <div className="h-14 rounded-2xl bg-white/10" />
-                  <div className="h-14 rounded-2xl bg-white/10" />
-                  <div className="h-14 rounded-2xl bg-white/10" />
-                </div>
+            <div key={project.title} className="group overflow-hidden rounded-[2rem] border border-white/10 bg-[#0B1020]/85 shadow-2xl shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-300/30">
+              <div className="relative h-56 overflow-hidden border-b border-white/10 bg-white/[0.03] md:h-64">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="h-full w-full object-cover object-left-top transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1020] via-transparent to-transparent" />
+                <span className="absolute left-5 top-5 rounded-full border border-white/10 bg-black/45 px-3 py-1 text-xs font-semibold text-cyan-100 backdrop-blur-md">
+                  {project.tag}
+                </span>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold tracking-tight">{project.title}</h3>
@@ -307,7 +313,7 @@ export default function Home() {
                 <div className="mt-5 space-y-3">
                   {project.items.map((item) => (
                     <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.04] p-4 text-sm text-slate-300">
-                      <Check className="h-4 w-4 text-cyan-300" /> {item}
+                      <Check className="h-4 w-4 shrink-0 text-cyan-300" /> {item}
                     </div>
                   ))}
                 </div>
