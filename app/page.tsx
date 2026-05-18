@@ -22,14 +22,14 @@ export default function Home() {
 
             <div className="flex flex-wrap gap-4">
               <a
-                href="https://wa.me/5571000000000"
+                href="https://wa.me/5571993392294?text=Olá!%20Vim%20através%20do%20site%20da%20Foco%20Start%20e%20gostaria%20de%20solicitar%20um%20orçamento."
                 className="bg-blue-600 hover:bg-blue-500 transition px-7 py-4 rounded-2xl font-medium"
               >
                 Solicitar orçamento
               </a>
 
               <a
-                href="https://wa.me/5571000000000"
+                href="https://wa.me/5571993392294?text=Olá!%20Vim%20através%20do%20site%20da%20Foco%20Start%20e%20gostaria%20de%20entender%20melhor%20as%20soluções."
                 className="border border-white/10 bg-white/5 hover:bg-white/10 transition px-7 py-4 rounded-2xl font-medium"
               >
                 Falar no WhatsApp
