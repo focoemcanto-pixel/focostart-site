@@ -64,6 +64,42 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             fbq('track', 'PageView');
           `}
         </Script>
+
+        <Script id="meta-whatsapp-events" strategy="afterInteractive">
+          {`
+            (function () {
+              function isWhatsAppUrl(url) {
+                return typeof url === 'string' && (
+                  url.includes('wa.me/') ||
+                  url.includes('api.whatsapp.com/') ||
+                  url.includes('web.whatsapp.com/')
+                );
+              }
+
+              document.addEventListener('click', function (event) {
+                var target = event.target;
+                var link = target && target.closest ? target.closest('a') : null;
+
+                if (!link || !isWhatsAppUrl(link.href)) return;
+
+                if (typeof window.fbq === 'function') {
+                  window.fbq('track', 'Lead', {
+                    content_name: 'WhatsApp CTA',
+                    content_category: 'Lead WhatsApp',
+                    destination: link.href,
+                  });
+
+                  window.fbq('trackCustom', 'WhatsAppClick', {
+                    button_text: (link.innerText || 'WhatsApp').trim(),
+                    page_url: window.location.href,
+                    destination: link.href,
+                  });
+                }
+              });
+            })();
+          `}
+        </Script>
+
         <noscript>
           <img
             height="1"
