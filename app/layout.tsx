@@ -70,10 +70,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             (function () {
               function isWhatsAppUrl(url) {
                 return typeof url === 'string' && (
-                  url.includes('wa.me/') ||
-                  url.includes('api.whatsapp.com/') ||
-                  url.includes('web.whatsapp.com/')
+                  url.indexOf('wa.me/') !== -1 ||
+                  url.indexOf('api.whatsapp.com/') !== -1 ||
+                  url.indexOf('web.whatsapp.com/') !== -1
                 );
+              }
+
+              function sendWhatsAppLead(link) {
+                if (typeof window.fbq !== 'function') return;
+
+                var buttonText = (link.innerText || link.getAttribute('aria-label') || 'WhatsApp').trim();
+
+                window.fbq('track', 'Lead', {
+                  content_name: 'WhatsApp CTA',
+                  content_category: 'whatsapp_lead',
+                  button_text: buttonText,
+                  page_url: window.location.href,
+                });
+
+                window.fbq('track', 'Contact', {
+                  content_name: 'WhatsApp CTA',
+                  content_category: 'whatsapp_contact',
+                  button_text: buttonText,
+                  page_url: window.location.href,
+                });
               }
 
               document.addEventListener('click', function (event) {
@@ -82,20 +102,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                 if (!link || !isWhatsAppUrl(link.href)) return;
 
-                if (typeof window.fbq === 'function') {
-                  window.fbq('track', 'Lead', {
-                    content_name: 'WhatsApp CTA',
-                    content_category: 'Lead WhatsApp',
-                    destination: link.href,
-                  });
+                sendWhatsAppLead(link);
 
-                  window.fbq('trackCustom', 'WhatsAppClick', {
-                    button_text: (link.innerText || 'WhatsApp').trim(),
-                    page_url: window.location.href,
-                    destination: link.href,
-                  });
+                if (
+                  event.defaultPrevented ||
+                  event.metaKey ||
+                  event.ctrlKey ||
+                  event.shiftKey ||
+                  event.altKey ||
+                  link.target === '_blank'
+                ) {
+                  return;
                 }
-              });
+
+                event.preventDefault();
+                var destination = link.href;
+
+                setTimeout(function () {
+                  window.location.href = destination;
+                }, 350);
+              }, true);
             })();
           `}
         </Script>
