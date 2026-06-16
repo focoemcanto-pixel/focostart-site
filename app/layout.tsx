@@ -7,19 +7,21 @@ const META_PIXEL_ID = '35840726372209449'
 export const metadata: Metadata = {
   metadataBase: new URL('https://focostart.com.br'),
   title: {
-    default: 'Foco Start | Sistemas inteligentes e automações modernas',
+    default: 'Foco Start | Sites profissionais sem mensalidade de hospedagem',
     template: '%s | Foco Start',
   },
   description:
-    'Desenvolvimento de sistemas personalizados, automações inteligentes e plataformas modernas para empresas, igrejas e negócios.',
+    'Criação de sites profissionais, landing pages e sistemas sob medida para empresas e profissionais que querem transmitir credibilidade e receber clientes pelo WhatsApp.',
   keywords: [
+    'site profissional',
+    'criação de sites',
+    'landing page',
+    'site sem mensalidade',
+    'site com whatsapp',
+    'site para arquitetos',
+    'site para psicólogos',
+    'site para pequenas empresas',
     'sistemas personalizados',
-    'automação',
-    'software sob medida',
-    'dashboard',
-    'sistema para igrejas',
-    'crm',
-    'automação whatsapp',
     'desenvolvimento web',
     'foco start',
   ],
@@ -29,16 +31,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     url: 'https://focostart.com.br',
-    title: 'Foco Start | Sistemas inteligentes e automações modernas',
+    title: 'Foco Start | Sites profissionais sem mensalidade de hospedagem',
     description:
-      'Automatize processos, organize operações e modernize seu negócio com soluções digitais inteligentes.',
+      'Tenha um site rápido, moderno e integrado ao WhatsApp para transmitir mais credibilidade e conquistar mais clientes.',
     siteName: 'Foco Start',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Foco Start',
+    title: 'Foco Start | Sites profissionais',
     description:
-      'Sistemas personalizados, automações inteligentes e plataformas modernas para negócios.',
+      'Sites profissionais, landing pages e sistemas sob medida para negócios que querem vender mais.',
   },
   robots: {
     index: true,
