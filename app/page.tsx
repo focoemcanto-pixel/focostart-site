@@ -148,12 +148,20 @@ function ProjectImage({ project }: { project: (typeof concepts)[number] }) {
   )
 }
 
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M16.02 3C8.84 3 3 8.74 3 15.8c0 2.42.69 4.78 2 6.82L3.7 29l6.55-1.69a13.2 13.2 0 0 0 5.77 1.34C23.19 28.65 29 22.9 29 15.84 29 8.76 23.19 3 16.02 3Zm0 23.47c-1.84 0-3.64-.49-5.2-1.43l-.37-.22-3.89 1 1.04-3.72-.24-.38a10.78 10.78 0 0 1-1.74-5.89c0-5.85 4.67-10.62 10.4-10.62 5.72 0 10.38 4.77 10.38 10.63 0 5.86-4.66 10.63-10.38 10.63Zm5.7-7.96c-.31-.16-1.84-.89-2.13-.99-.29-.1-.5-.16-.71.16-.21.31-.81.99-.99 1.19-.18.21-.37.23-.68.08-.31-.16-1.31-.47-2.5-1.51-.92-.8-1.55-1.8-1.73-2.11-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.68-.97-2.3-.26-.6-.52-.52-.71-.53h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.06-1.1 2.58s1.13 3 1.29 3.21c.16.21 2.22 3.33 5.38 4.67.75.32 1.34.51 1.8.65.76.24 1.45.21 1.99.13.61-.09 1.84-.73 2.1-1.44.26-.71.26-1.32.18-1.44-.08-.13-.29-.21-.6-.37Z" />
+    </svg>
+  )
+}
+
 export default function Home() {
   return (
     <main id="top" className="min-h-screen overflow-hidden bg-[#05070D] text-white selection:bg-blue-500/30">
       <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.08),transparent_34%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.14),transparent_34%)]" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-grid opacity-35" />
-      <a href={whatsappTalk} className="fixed bottom-6 right-6 z-50 hidden h-16 w-16 items-center justify-center rounded-full bg-green-500 shadow-2xl shadow-green-500/30 transition hover:scale-105 md:flex" aria-label="WhatsApp"><MessageCircle className="h-7 w-7 text-white" /></a>
+      <a href={whatsappTalk} className="fixed bottom-6 right-6 z-50 hidden h-16 w-16 items-center justify-center rounded-full bg-[#25D366] shadow-2xl shadow-green-500/30 transition hover:scale-105 md:flex" aria-label="WhatsApp"><WhatsAppIcon className="h-9 w-9 text-white" /></a>
       <a href={whatsappBudget} className="sticky-mobile-cta md:hidden">Solicitar orçamento <ArrowRight className="h-4 w-4" /></a>
 
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#05070D]/78 backdrop-blur-xl">
