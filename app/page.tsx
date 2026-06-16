@@ -61,31 +61,31 @@ const solutions = [
 
 const concepts = [
   {
-    tag: 'Arquitetos',
-    title: 'Site profissional para arquitetos',
-    description: 'Apresente portfólio, serviços, diferenciais e receba contatos qualificados diretamente pelo WhatsApp.',
-    image: '/projects/igrejas-dashboard.png',
+    tag: 'Sites',
+    title: 'Site profissional para seu negócio',
+    description: 'Apresente seus serviços, gere mais credibilidade e transforme visitantes em clientes através do WhatsApp.',
+    image: '/projects/site-profissional.webp',
     href: whatsappTalk,
     cta: 'Quero um site assim',
-    items: ['Portfólio organizado', 'WhatsApp em destaque', 'Imagem premium'],
+    items: ['Design moderno', 'WhatsApp integrado', 'Carregamento ultrarrápido'],
   },
   {
-    tag: 'Serviços',
-    title: 'Landing page para captar clientes',
-    description: 'Uma página objetiva para campanhas, anúncios e profissionais que precisam gerar mais oportunidades.',
-    image: '/projects/crm-dashboard.png',
+    tag: 'Landing Pages',
+    title: 'Landing pages que geram clientes',
+    description: 'Páginas estratégicas para campanhas, anúncios e captação de leads.',
+    image: '/projects/landing-page-conversao.webp',
     href: whatsappTalk,
-    cta: 'Quero captar clientes',
-    items: ['Headline forte', 'Prova de autoridade', 'Chamada para WhatsApp'],
+    cta: 'Quero gerar mais clientes',
+    items: ['Foco em conversão', 'Formulários inteligentes', 'Estrutura otimizada para anúncios'],
   },
   {
-    tag: 'Empresas',
-    title: 'Sistema sob medida para negócios',
-    description: 'Para empresas que precisam organizar clientes, contratos, atendimentos, agenda e processos internos.',
-    image: '/projects/eventos-dashboard.png',
+    tag: 'Sistemas',
+    title: 'Sistemas personalizados para empresas',
+    description: 'Soluções sob medida para automatizar processos e organizar operações.',
+    image: '/projects/sistema-personalizado.webp',
     href: whatsappTalk,
-    cta: 'Quero algo personalizado',
-    items: ['Área do cliente', 'Processos organizados', 'Painel administrativo'],
+    cta: 'Quero uma solução personalizada',
+    items: ['Área do cliente', 'Painéis administrativos', 'Processos automatizados'],
   },
 ]
 
@@ -262,7 +262,7 @@ export default function Home() {
       </section>
 
       <section id="projetos" className="relative z-10 mx-auto max-w-7xl px-6 py-20">
-        <SectionHeader eyebrow="Exemplos de soluções" title="Seu cliente precisa se encantar antes de comprar." text="Criamos páginas modernas para apresentar seu negócio com clareza, autoridade e chamada direta para o WhatsApp." />
+        <SectionHeader eyebrow="Soluções para o seu negócio" title="Você precisa apenas de um site ou de uma solução completa?" text="Comece com um site profissional ou vá além com landing pages e sistemas personalizados." />
         <div className="mt-12 grid gap-7 lg:grid-cols-3">
           {concepts.map((project) => (
             <div key={project.title} className="group overflow-hidden rounded-[2rem] border border-white/10 bg-[#0B1020]/85 shadow-2xl shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-300/30">
