@@ -78,24 +78,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 );
               }
 
+              function getMetaTestEventCode() {
+                try {
+                  var params = new URLSearchParams(window.location.search);
+                  return params.get('test_event_code') || params.get('testEventCode') || '';
+                } catch (error) {
+                  return '';
+                }
+              }
+
+              function buildEventPayload(link, category) {
+                var buttonText = (link.innerText || link.getAttribute('aria-label') || 'WhatsApp').trim();
+                var testEventCode = getMetaTestEventCode();
+                var payload = {
+                  content_name: 'WhatsApp CTA',
+                  content_category: category,
+                  button_text: buttonText,
+                  page_url: window.location.href,
+                };
+
+                if (testEventCode) {
+                  payload.test_event_code = testEventCode;
+                }
+
+                return payload;
+              }
+
               function sendWhatsAppLead(link) {
                 if (typeof window.fbq !== 'function') return;
 
-                var buttonText = (link.innerText || link.getAttribute('aria-label') || 'WhatsApp').trim();
-
-                window.fbq('track', 'Lead', {
-                  content_name: 'WhatsApp CTA',
-                  content_category: 'whatsapp_lead',
-                  button_text: buttonText,
-                  page_url: window.location.href,
-                });
-
-                window.fbq('track', 'Contact', {
-                  content_name: 'WhatsApp CTA',
-                  content_category: 'whatsapp_contact',
-                  button_text: buttonText,
-                  page_url: window.location.href,
-                });
+                window.fbq('track', 'Lead', buildEventPayload(link, 'whatsapp_lead'));
+                window.fbq('track', 'Contact', buildEventPayload(link, 'whatsapp_contact'));
               }
 
               document.addEventListener('click', function (event) {
