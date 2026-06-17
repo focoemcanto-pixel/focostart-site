@@ -70,6 +70,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="meta-whatsapp-events" strategy="afterInteractive">
           {`
             (function () {
+              var OLD_WHATSAPP_NUMBER = '5571993392294';
+              var NEW_WHATSAPP_NUMBER = '5571997178807';
+
               function isWhatsAppUrl(url) {
                 return typeof url === 'string' && (
                   url.indexOf('wa.me/') !== -1 ||
@@ -87,6 +90,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 }
               }
 
+              function replaceWhatsAppNumber(url) {
+                if (!isWhatsAppUrl(url)) return url;
+                return url.replace(OLD_WHATSAPP_NUMBER, NEW_WHATSAPP_NUMBER);
+              }
+
+              function normalizeWhatsAppLinks() {
+                var links = document.querySelectorAll('a[href]');
+                links.forEach(function (link) {
+                  if (!isWhatsAppUrl(link.href)) return;
+                  link.href = replaceWhatsAppNumber(link.href);
+                });
+              }
+
               function buildEventPayload(link, category) {
                 var buttonText = (link.innerText || link.getAttribute('aria-label') || 'WhatsApp').trim();
                 var testEventCode = getMetaTestEventCode();
@@ -95,6 +111,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   content_category: category,
                   button_text: buttonText,
                   page_url: window.location.href,
+                  whatsapp_number: NEW_WHATSAPP_NUMBER,
                 };
 
                 if (testEventCode) {
@@ -111,12 +128,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 window.fbq('track', 'Contact', buildEventPayload(link, 'whatsapp_contact'));
               }
 
+              normalizeWhatsAppLinks();
+
               document.addEventListener('click', function (event) {
                 var target = event.target;
                 var link = target && target.closest ? target.closest('a') : null;
 
                 if (!link || !isWhatsAppUrl(link.href)) return;
 
+                link.href = replaceWhatsAppNumber(link.href);
                 sendWhatsAppLead(link);
 
                 if (
@@ -131,7 +151,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 }
 
                 event.preventDefault();
-                var destination = link.href;
+                var destination = replaceWhatsAppNumber(link.href);
 
                 setTimeout(function () {
                   window.location.href = destination;
